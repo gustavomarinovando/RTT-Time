@@ -12,8 +12,13 @@ EstimatedRTT = a.transpose().iloc[1].values
 SimpleAverage = a.transpose().iloc[2].values
 TimeoutInterval = a.transpose().iloc[3].values
 x = np.arange(1, 200, 1).tolist()
+y_lim_b = min(EstimatedRTT)
+y_lim_t = max(TimeoutInterval)
 
 plt.plot(x, SampleRTT, x, EstimatedRTT, x, SimpleAverage, x, TimeoutInterval)
 plt.gca().legend(('SampleRTT', 'EstimatedRTT', 'SimpleAverage', 'TimeoutInterval'))
 plt.ylabel('Time (ms)')
+plt.xlabel('Samples')
+plt.ylim([y_lim_b, y_lim_t])
+plt.xlim([0, 200])
 plt.show()
